@@ -1,6 +1,6 @@
 :root {
     --primary-color-light: #FFEB3B; /* 黄色 */
-    --primary-color-dark: #FBC02D; /* 少し濃い黄色 */
+    --primary-color-dark: #fab300; /* 少し濃い黄色 */
     --secondary-color-light: #8BC34A; /* 緑色 */
     --secondary-color-dark: #689F38; /* 少し濃い緑色 */
     --text-color-dark: #333;
@@ -76,7 +76,7 @@ body {
 }
 
 .header__logo {
-    font-size: 1.8em;
+    font-size: 1.2em;
     font-weight: bold;
     color: var(--text-color-light);
     cursor: pointer;
@@ -373,6 +373,7 @@ body {
 
 .fv-sub-tagline-animated .line-1 {
     display: inline-block;
+    font-size: 1em;
     text-indent: -10rem;
     text-align: left;
 }
@@ -381,6 +382,13 @@ body {
     display: inline-block;
     text-indent: 24rem;
     text-align: right;
+}
+
+.fv-sub-tagline-animated .line-3 {
+    display: block; /* 新しい行をブロック要素として表示 */
+    font-size: 0.6em;
+    margin-top: 20px; /* 他の行との間隔 */
+    text-align: center; /* 中央に配置 */
 }
 
 
@@ -399,19 +407,17 @@ body {
 }
 
 .index-service-item {
+    display: flex; /* Flexboxを有効にする */
+    flex-direction: column; /* 子要素を縦に並べる */
     flex: 1;
     min-width: 280px;
     max-width: 350px;
-    background-color: var(--text-color-light);
-    border-radius: 10px;
-    box-shadow: 0 5px 15px var(--shadow-color);
-    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .index-service-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .index-service-item img {
@@ -424,11 +430,40 @@ body {
     padding: 25px;
 }
 
+.section-title{
+    font-size: 2.8em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: var(--secondary-color-dark);
+}
+
 .index-service-item__title {
     font-size: 1.5em;
     font-weight: bold;
     color: var(--secondary-color-dark);
     margin-bottom: 10px;
+}
+
+/* リンクをブロック要素にし、flexboxで子要素を縦に並べる */
+.index-service-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    background-color: var(--text-color-light); /* 背景色をaタグに移動 */
+    border-radius: 10px; /* 角丸をaタグに移動 */
+    box-shadow: 0 5px 15px var(--shadow-color); /* 影をaタグに移動 */
+    overflow: hidden; /* はみ出しを隠す設定をaタグに移動 */
+}
+
+.index-service-item a img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.index-service-item__content {
+    padding: 25px;
 }
 
 .index-service-item__text {
@@ -674,6 +709,165 @@ body {
     font-size: 0.95em;
     line-height: 1.6;
     color: var(--text-color-dark);
+}
+
+/* Q&Aセクションの背景色とタイトルを修正 */
+.index-faq-section {
+    background-color: #FFEB3B;
+    padding-bottom: 15px; /* ここを追加 */
+}
+
+.index-faq-section .section-title {
+    text-align: center;
+}
+
+/* Q&Aセクションのチャット風デザイン */
+.faq-chat-item {
+    margin-bottom: 30px;
+}
+
+.faq-question,
+.faq-answer {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+/* Qの吹き出しを右寄せ */
+.faq-question {
+    justify-content: flex-end;
+}
+
+/* Aの吹き出しを左寄せ */
+.faq-answer {
+    justify-content: flex-start;
+}
+
+/* 吹き出しの共通スタイル */
+.faq-bubble {
+    position: relative;
+    padding: 15px;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Qの吹き出し（緑色） */
+.faq-bubble--q {
+    background-color: #8BC34A;
+    color: white;
+    border-bottom-right-radius: 0;
+}
+
+/* Aの吹き出し（白色） */
+.faq-bubble--a {
+    background-color: white;
+    color: #333;
+    border-bottom-left-radius: 0;
+}
+
+/* 吹き出しの三角形（Q用） */
+.faq-bubble--q::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-left-color: #8BC34A;
+    border-bottom-color: #8BC34A;
+    border-bottom-right-radius: 5px;
+}
+
+/* 吹き出しの三角形（A用） */
+.faq-bubble--a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-color: white;
+    border-bottom-color: white;
+    border-bottom-left-radius: 5px;
+}
+
+/* アイコンの共通スタイル */
+.faq-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #eee;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+/* Qのアイコン */
+.faq-icon--q {
+    background-color: #555;
+}
+
+/* Aのアイコン */
+.faq-icon--a {
+    background-color: #555;
+}
+
+.index-faq-section .index-content-wrapper {
+    display: flex; /* Flexboxを有効化 */
+    flex-direction: column; /* 子要素を縦に並べる */
+    gap: 15px; /* 各要素間に15pxの余白を作成 */
+    max-width: 1100px; /* ここを1200pxから800pxに変更 */
+    margin: 0 auto; /* 中央寄せ */
+}
+
+/* floating-contact */
+#floating-contact {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color-dark);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+#floating-contact:hover {
+    background-color: var(--secondary-color-dark);
+}
+
+/* floating-top */
+#floating-top {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background-color: var(--primary-color-dark);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50%;
+    z-index: 1000;
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    line-height: 40px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+#floating-top:hover {
+    background-color: var(--secondary-color-dark);
 }
 
 /* --- Footer --- */
@@ -1072,7 +1266,16 @@ body {
     }
 
     .fv-text-container {
-        width: 90%;
+        position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--text-color-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px; /* 900pxから1200pxに拡張 */
     }
 
     .fv-main-title-animated {
@@ -1081,16 +1284,25 @@ body {
     }
 
     .fv-sub-tagline-animated {
-        font-size: 1.6em;
+        font-size: 2em;
     }
 
     .index-services-grid {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
     }
 
     .index-service-item {
-        max-width: 90%;
+        display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .index-greeting-section h2 {
